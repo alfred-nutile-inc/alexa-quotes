@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Alex and Dev Quotes
+Resources:
+  AlexaGetQuote:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Timeout: 120
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Events:
+        AlexaSkillEvent:
+          Type: AlexaSkill

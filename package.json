@@ -1,0 +1,113 @@
+{
+  "name": "github-webhooks",
+  "version": "0.0.0",
+  "description": "Github events to ES",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm prune",
+    "build": "babel src/index.js -o src/handler.js",
+    "babel": "babel --presets es2015 src/index.js -o src/handler.js",
+    "webpack": "webpack",
+    "test": "nyc --all ava tests",
+    "test-watch": "nyc --all ava tests --watch tests",
+    "deploy": "sh ./update.sh",
+    "install": "find ./node_modules/* -mtime +10950 -exec touch {} \\;"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "ava"
+    ],
+    "rules": {
+      "ava/assertion-arguments": "error",
+      "ava/max-asserts": [
+        "off",
+        5
+      ],
+      "ava/no-async-fn-without-await": "error",
+      "ava/no-cb-test": "off",
+      "ava/no-duplicate-modifiers": "error",
+      "ava/no-identical-title": "error",
+      "ava/no-ignored-test-files": "error",
+      "ava/no-invalid-end": "error",
+      "ava/no-nested-tests": "error",
+      "ava/no-only-test": "error",
+      "ava/no-skip-assert": "error",
+      "ava/no-skip-test": "error",
+      "ava/no-statement-after-end": "error",
+      "ava/no-todo-implementation": "error",
+      "ava/no-todo-test": "warn",
+      "ava/no-unknown-modifiers": "error",
+      "ava/prefer-async-await": "error",
+      "ava/prefer-power-assert": "off",
+      "ava/test-ended": "error",
+      "ava/test-title": [
+        "error",
+        "if-multiple"
+      ],
+      "ava/use-t-well": "error",
+      "ava/use-t": "error",
+      "ava/use-test": "error",
+      "ava/use-true-false": "error"
+    }
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:pfizer/github-webhooks-serverless.git"
+  },
+  "keywords": [
+    "tool",
+    "github",
+    "webhooks",
+    "kinesis"
+  ],
+  "author": "alfrednutile@gmail.com thanks",
+  "contributors": [
+    "Doug Moscrop laid the foundation for this<doug.moscrop@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pfizer/github-webhooks-serverless/issues"
+  },
+  "homepage": "https://github.com/pfizer/github-webhooks-serverless#readme",
+  "dependencies": {
+    "async": "^2.6.0",
+    "aws-sdk": "^2.233.1",
+    "axios": "^0.18.0",
+    "fse": "^4.0.0",
+    "needle": "^2.2.1",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "6.16.0",
+    "dotenv": "^5.0.1",
+    "eslint": "^3.19.0",
+    "eslint-plugin-ava": "^4.5.1",
+    "handlebars": "^4.0.11",
+    "nock": "^9.0.5",
+    "nyc": "^10.1.2",
+    "supertest": "^3.0.0",
+    "uglify-js": "^3.3.23",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.7.0",
+    "webpack-cli": "^2.1.3"
+  }
+}
