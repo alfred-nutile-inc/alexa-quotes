@@ -21,3 +21,7 @@ node --inspect-brk node_modules/ava/profile.js tests/testIndex.js
 ## Local Invoking
 
 `sam local invoke AlexaGetQuote -e tests/fixtures/hw.json`
+
+## Alex Test URL
+
+`Alex, ask dev quotes`
